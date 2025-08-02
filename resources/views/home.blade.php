@@ -15,11 +15,14 @@
                             <p class="text-gray-700"><span class="font-medium">Description:</span> {{ $job->short_description }}</p>
                         </div>
                         <div class="">
-                            <a href="{{ route('job.description', ['id' => $job->id]) }}" class="inline-block px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700 transition">See Description</a>
+                            <a href="{{ route('job.description', $job) }}" class="inline-block px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700 transition">See Description</a>
                         </div>
                     </li>
                 @endforeach
             </ul>
+            <div class="mt-8">
+                {{ $jobs->links() }}
+            </div>
         </div>
     </div>
 </x-layout>

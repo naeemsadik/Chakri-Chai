@@ -1,0 +1,364 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chakri Chai - Find Your Dream Job in Bangladesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalpurush&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#047857',
+                        primaryLight: '#059669',
+                        secondary: '#0e5a8a',
+                        accent: '#e11d48'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        bangla: ['Kalpurush', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link:hover, .nav-link.active {
+            position: relative;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #059669;
+            border-radius: 10px;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-poppins">
+    <!-- Modern Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img class="h-10 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=emerald&shade=500" alt="Chakri Chai Logo">
+                    <div class="ml-3">
+                        <span class="text-2xl font-bold text-primary">চাকরি চাই</span>
+                        <p class="text-xs text-gray-500 -mt-1">Find Your Dream Job</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="{{ route('home') }}" class="nav-link text-gray-700 hover:text-primary font-medium active">Home</a>
+                    <div class="dropdown relative">
+                        <a href="#" class="nav-link text-gray-700 hover:text-primary font-medium flex items-center">
+                            Jobs <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="dropdown-menu absolute hidden mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Browse Jobs</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Job Alerts</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Saved Jobs</a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-link text-gray-700 hover:text-primary font-medium">Companies</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-primary font-medium">Candidates</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-primary font-medium">Resources</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-primary font-medium">Contact</a>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#" class="px-4 py-2 text-primary font-medium hover:bg-gray-100 rounded-md transition">Sign In</a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white font-medium rounded-md hover:bg-primaryLight transition">Sign Up</a>
+                    <a href="#" class="px-4 py-2 bg-accent text-white font-medium rounded-md hover:bg-red-700 transition flex items-center">
+                        <i class="fas fa-plus mr-2"></i> Post a Job
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <div class="lg:hidden flex items-center">
+                    <a href="#" class="mr-4 px-3 py-2 bg-accent text-white text-sm rounded-md hover:bg-red-700 transition flex items-center">
+                        <i class="fas fa-plus mr-1"></i> Job
+                    </a>
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4">
+            <a href="#" class="block px-3 py-3 rounded-md text-gray-700 hover:bg-gray-100 font-medium border-b">Home</a>
+            <a href="#" class="block px-3 py-3 rounded-md text-gray-700 hover:bg-gray-100 font-medium border-b">Jobs</a>
+            <a href="#" class="block px-3 py-3 rounded-md text-gray-700 hover:bg-gray-100 font-medium border-b">Companies</a>
+            <a href="#" class="block px-3 py-3 rounded-md text-gray-700 hover:bg-gray-100 font-medium border-b">Candidates</a>
+            <a href="#" class="block px-3 py-3 rounded-md text-gray-700 hover:bg-gray-100 font-medium border-b">Resources</a>
+            <a href="#" class="block px-3 py-3 rounded-md text-gray-700 hover:bg-gray-100 font-medium border-b">Contact</a>
+            <div class="mt-4 pt-4 border-t">
+                <a href="#" class="block px-3 py-2 rounded-md text-center text-primary font-medium mb-2 border border-primary">Sign In</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-center bg-primary text-white font-medium">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-primary to-primaryLight py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Find Your Dream Job in Bangladesh</h1>
+                    <p class="text-xl text-white opacity-90 mb-8">Thousands of job opportunities from top companies. Join over 500,000 job seekers who found their perfect match through চাকরি চাই.</p>
+                    
+                    <div class="bg-white rounded-lg shadow-lg p-2 flex">
+                        <div class="flex-1">
+                            <input type="text" placeholder="Job title, keywords, or company" class="w-full px-4 py-3 border-0 focus:outline-none">
+                        </div>
+                        <div class="flex-1 border-l">
+                            <input type="text" placeholder="City or location" class="w-full px-4 py-3 border-0 focus:outline-none">
+                        </div>
+                        <button class="ml-2 px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-red-700 transition">
+                            Search
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-white opacity-80 text-sm">Popular Searches:</span>
+                        <a href="#" class="text-white text-sm bg-black bg-opacity-20 px-3 py-1 rounded-full hover:bg-opacity-30">Software Engineer</a>
+                        <a href="#" class="text-white text-sm bg-black bg-opacity-20 px-3 py-1 rounded-full hover:bg-opacity-30">Marketing</a>
+                        <a href="#" class="text-white text-sm bg-black bg-opacity-20 px-3 py-1 rounded-full hover:bg-opacity-30">Accountant</a>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="relative">
+                        <div class="bg-white bg-opacity-20 rounded-full w-80 h-80 absolute -top-10 -left-10"></div>
+                        <div class="bg-white bg-opacity-20 rounded-full w-64 h-64 absolute bottom-10 right-0"></div>
+                        <div class="relative bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+                            <div class="text-center p-6">
+                                <i class="fas fa-users text-6xl text-white opacity-50 mb-4"></i>
+                                <p class="text-white font-semibold">Job Seekers Community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stats-card bg-white p-6 rounded-lg shadow text-center border-t-4 border-primary">
+                    <h3 class="text-3xl font-bold text-primary mb-2">25,000+</h3>
+                    <p class="text-gray-600">Jobs Available</p>
+                </div>
+                <div class="stats-card bg-white p-6 rounded-lg shadow text-center border-t-4 border-secondary">
+                    <h3 class="text-3xl font-bold text-secondary mb-2">8,500+</h3>
+                    <p class="text-gray-600">Companies</p>
+                </div>
+                <div class="stats-card bg-white p-6 rounded-lg shadow text-center border-t-4 border-accent">
+                    <h3 class="text-3xl font-bold text-accent mb-2">500,000+</h3>
+                    <p class="text-gray-600">Job Seekers</p>
+                </div>
+                <div class="stats-card bg-white p-6 rounded-lg shadow text-center border-t-4 border-primaryLight">
+                    <h3 class="text-3xl font-bold text-primaryLight mb-2">1.2M+</h3>
+                    <p class="text-gray-600">Applications</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Jobs Section -->
+    <div class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Featured Jobs</h2>
+                <a href="#" class="text-primary font-medium hover:underline">View All Jobs <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Job Card 1 -->
+                <div class="job-card bg-white rounded-xl shadow-md p-6 border-l-4 border-primary transition duration-300">
+                    <div class="flex items-start">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4"></div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-900">Senior Software Engineer</h3>
+                            <p class="text-gray-600">Bkash Limited</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-map-marker-alt mr-1"></i> Dhaka</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-briefcase mr-1"></i> Full-time</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-money-bill-wave mr-1"></i> ৳150,000 - ৳200,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Posted 2 days ago</span>
+                        <a href="#" class="text-primary font-medium hover:underline">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Job Card 2 -->
+                <div class="job-card bg-white rounded-xl shadow-md p-6 border-l-4 border-secondary transition duration-300">
+                    <div class="flex items-start">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4"></div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-900">Marketing Manager</h3>
+                            <p class="text-gray-600">Daraz Bangladesh</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-map-marker-alt mr-1"></i> Dhaka</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-briefcase mr-1"></i> Full-time</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-money-bill-wave mr-1"></i> ৳120,000 - ৳150,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Posted 1 day ago</span>
+                        <a href="#" class="text-secondary font-medium hover:underline">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Job Card 3 -->
+                <div class="job-card bg-white rounded-xl shadow-md p-6 border-l-4 border-accent transition duration-300">
+                    <div class="flex items-start">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mr-4"></div>
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-900">Financial Analyst</h3>
+                            <p class="text-gray-600">Grameenphone Ltd</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-map-marker-alt mr-1"></i> Dhaka</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-briefcase mr-1"></i> Full-time</span>
+                                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"><i class="fas fa-money-bill-wave mr-1"></i> ৳100,000 - ৳140,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Posted 3 days ago</span>
+                        <a href="#" class="text-accent font-medium hover:underline">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="py-16 bg-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Are You Hiring?</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-10">Reach thousands of qualified candidates in Bangladesh. Post your job today and find the perfect match for your team.</p>
+            <a href="#" class="inline-block px-8 py-4 bg-accent text-white font-bold rounded-lg hover:bg-red-700 transition duration-300 text-lg">
+                <i class="fas fa-plus mr-2"></i> Post a Job for Free
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=emerald&shade=500" alt="Chakri Chai Logo">
+                        <span class="ml-2 text-xl font-bold text-white">চাকরি চাই</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Bangladesh's leading job portal connecting job seekers with top employers since 2015.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">For Job Seekers</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Browse Jobs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Browse Companies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Job Alerts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Career Advice</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Resume Builder</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">For Employers</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Post a Job</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Browse Candidates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Recruiting Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing Plans</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">123 Business Avenue, Dhaka 1212, Bangladesh</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">+880 1234 567890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">info@chakrichai.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 চাকরি চাই. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

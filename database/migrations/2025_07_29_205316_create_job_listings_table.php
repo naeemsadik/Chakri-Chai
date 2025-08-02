@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('job_listings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('employer_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->string('short_description');
             $table->text('description');
-            $table->string('company');
+            $table->string('company'); // Optional if you already have it in employer
             $table->string('location');
-            $table->string('type');
+            $table->enum('type', ['full-time', 'part-time', 'contract', 'internship']); // Optional
             $table->string('salary');
             $table->timestamps();
         });

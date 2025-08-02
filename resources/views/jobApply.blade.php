@@ -10,12 +10,12 @@
                 <span class="font-semibold">Salary:</span> {{ $job->salary }}
             </p>
 
-            <form action="#" method="POST" class="space-y-4">
+            <form action="{{ route('application.store', ['job' => $job->id]) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                 @csrf
 
                 <div>
                     <label class="block text-gray-700 font-medium">Full Name</label>
-                    <input type="text" name="name" class="w-full mt-1 p-2 border border-gray-300 rounded" required>
+                    <input type="text" name="full_name" class="w-full mt-1 p-2 border border-gray-300 rounded" required>
                 </div>
 
                 <div>

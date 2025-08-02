@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Authenticatable implements JWTSubject
+class Employer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
         'email',
+        'company_name',
         'phone_number',
-        'current_workplace',
         'password'
     ];
 
-    public function applications()
+    public function jobs()
     {
-        return $this->hasMany(JobApplication::class, 'employee_id');
+        return $this->hasMany(JobListing::class);
     }
 }

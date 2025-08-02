@@ -15,20 +15,15 @@
             <div class="flex justify-between h-16 items-center">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=emerald&shade=500" alt="Chakri Chai Logo">
-                    <span class="ml-2 text-xl font-bold text-emerald-600">Chakri Chai</span>
+                    <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=emerald&shade=500" alt="Chakri Chai Logo">
+                        <span class="ml-2 text-xl font-bold text-emerald-600">Chakri Chai</span>
+                    </a>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden sm:flex space-x-8">
                     <a href="{{ route('home') }}" class="text-gray-700 hover:text-emerald-600 font-medium">Home</a>
-                </div>
-
-                <!-- User/Profile Dropdown Placeholder -->
-                <div class="hidden sm:flex items-center space-x-4">
-                    <button type="button" class="bg-emerald-400 text-gray-100 px-3 py-1 rounded hover:bg-emerald-500">
-                        Login
-                    </button>
                 </div>
 
                 <!-- Mobile Hamburger -->
